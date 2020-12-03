@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Pacientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pacientes</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Estatus</th>
+            <th>Fecha creacion</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Diego</td>
+            <td>Activo</td>
+            <td>02 diciembre 2020</td>
+            <td>
+                <a href="@Url.Action("Edit","Patients")"><i class="fas fa-edit"></i></a> | <i class="fas fa-user-minus"></i> | <a href="@Url.Action("DataShow","Patients")"><i class="fas fa-chart-pie"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td>Cesar</td>
+            <td>Activo</td>
+            <td>17 octubre 2020</td>
+            <td>
+                <i class="fas fa-edit"></i> | <i class="fas fa-user-minus"></i> | <i class="fas fa-chart-pie"></i>
+            </td>
+        </tr>
+        <tr>
+            <td>Fernanda</td>
+            <td>No activo</td>
+            <td>12 octubre 2020</td>
+            <td>
+                <i class="fas fa-chart-pie"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
