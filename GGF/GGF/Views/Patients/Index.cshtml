@@ -1,4 +1,4 @@
-﻿
+﻿@model List<GGF.Models.GetPatientsByTherapist_Result>
 @{
     ViewBag.Title = "Pacientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,7 +16,24 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Status</td>
+                <td>02 diciembre 2020</td>
+                <td>
+                    <a href="@Url.Action("DataShow","Patients")"><i class="fas fa-chart-pie"></i></a>
+                    @if (item.isEditable == true)
+                    {
+                        @:| <a href="@Url.Action("Edit","Patients")"><i class="fas fa-edit"></i></a> | <i class="fas fa-user-minus"></i>
+                    }
+                </td>
+            </tr>
+        }
+
+        @*<tr>
             <td>Diego</td>
             <td>Activo</td>
             <td>02 diciembre 2020</td>
@@ -39,6 +56,6 @@
             <td>
                 <i class="fas fa-chart-pie"></i>
             </td>
-        </tr>
+        </tr>*@
     </tbody>
 </table>

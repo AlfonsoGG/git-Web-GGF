@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GiveGoodFaceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CT_Eventos">
+    <Key>
+      <PropertyRef Name="Evento_Id" />
+    </Key>
+    <Property Name="Evento_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="150" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+    <Property Name="Tipo" Type="varchar" MaxLength="50" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="EdicionFecha" Type="datetime" />
+    <Property Name="EdicionUsuario" Type="int" />
+  </EntityType>
+  <EntityType Name="Modulos">
+    <Key>
+      <PropertyRef Name="Modulo_Id" />
+    </Key>
+    <Property Name="Modulo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="150" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="EdicionFecha" Type="datetime" />
+    <Property Name="EdicionUsuario" Type="int" />
+  </EntityType>
+  <EntityType Name="Pacientes">
+    <Key>
+      <PropertyRef Name="Paciente_Id" />
+    </Key>
+    <Property Name="Paciente_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario_Id" Type="int" Nullable="false" />
+    <Property Name="Terapeuta_Id" Type="int" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="EdicionFecha" Type="datetime" />
+    <Property Name="EdicionUsuario" Type="int" />
+  </EntityType>
+  <EntityType Name="RegistrosEvento">
+    <Key>
+      <PropertyRef Name="RegistroEvento_Id" />
+    </Key>
+    <Property Name="RegistroEvento_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Evento_Id" Type="int" Nullable="false" />
+    <Property Name="Paciente_Id" Type="int" Nullable="false" />
+    <Property Name="CreacionFecha" Type="datetime" />
+    <Property Name="Valor" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Rol_Id" />
+    </Key>
+    <Property Name="Rol_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+    <Property Name="EsPersonal" Type="bit" Nullable="false" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="EdicionFecha" Type="datetime" />
+    <Property Name="EdicionUsuario" Type="int" />
+  </EntityType>
+  <EntityType Name="Roles_Modulos">
+    <Key>
+      <PropertyRef Name="Rol_Modulo_Id" />
+    </Key>
+    <Property Name="Rol_Modulo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rol_Id" Type="int" Nullable="false" />
+    <Property Name="Modulo_Id" Type="int" Nullable="false" />
+    <Property Name="CreacionFecha" Type="datetime" />
+    <Property Name="CreacionUsuario" Type="int" />
+  </EntityType>
+  <EntityType Name="Sy_Configuraciones">
+    <Key>
+      <PropertyRef Name="Configuracion_Id" />
+    </Key>
+    <Property Name="Configuracion_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Terapeutas">
+    <Key>
+      <PropertyRef Name="Terapeuta_Id" />
+    </Key>
+    <Property Name="Terapeuta_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario_Id" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="EdicionFecha" Type="datetime" />
+    <Property Name="EdicionUsuario" Type="int" />
+  </EntityType>
+  <EntityType Name="Tokens">
+    <Key>
+      <PropertyRef Name="Token_Id" />
+    </Key>
+    <Property Name="Token_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Terapeuta_Id" Type="int" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExpiracionFecha" Type="datetime" Nullable="false" />
+    <Property Name="RelacionFecha" Type="datetime" />
+    <Property Name="Paciente_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Usuario_Id" />
+    </Key>
+    <Property Name="Usuario_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rol_Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="CorreoElectronico" Type="varchar" MaxLength="100" />
+    <Property Name="Contrasena" Type="varchar" MaxLength="100" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="EdicionFecha" Type="datetime" />
+    <Property Name="EdicionUsuario" Type="int" />
+  </EntityType>
+  <Association Name="FK_Pacientes_Terapeutas">
+    <End Role="Terapeutas" Type="Self.Terapeutas" Multiplicity="0..1" />
+    <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terapeutas">
+        <PropertyRef Name="Terapeuta_Id" />
+      </Principal>
+      <Dependent Role="Pacientes">
+        <PropertyRef Name="Terapeuta_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pacientes_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Pacientes">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegistrosEvento_CT_Eventos">
+    <End Role="CT_Eventos" Type="Self.CT_Eventos" Multiplicity="1" />
+    <End Role="RegistrosEvento" Type="Self.RegistrosEvento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CT_Eventos">
+        <PropertyRef Name="Evento_Id" />
+      </Principal>
+      <Dependent Role="RegistrosEvento">
+        <PropertyRef Name="Evento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegistrosEvento_Pacientes">
+    <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1" />
+    <End Role="RegistrosEvento" Type="Self.RegistrosEvento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacientes">
+        <PropertyRef Name="Paciente_Id" />
+      </Principal>
+      <Dependent Role="RegistrosEvento">
+        <PropertyRef Name="Paciente_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_Modulos_Modulos">
+    <End Role="Modulos" Type="Self.Modulos" Multiplicity="1" />
+    <End Role="Roles_Modulos" Type="Self.Roles_Modulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulos">
+        <PropertyRef Name="Modulo_Id" />
+      </Principal>
+      <Dependent Role="Roles_Modulos">
+        <PropertyRef Name="Modulo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_Modulos_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Roles_Modulos" Type="Self.Roles_Modulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="Roles_Modulos">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Terapeutas_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Terapeutas" Type="Self.Terapeutas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Terapeutas">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tokens_Pacientes">
+    <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+    <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacientes">
+        <PropertyRef Name="Paciente_Id" />
+      </Principal>
+      <Dependent Role="Tokens">
+        <PropertyRef Name="Paciente_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tokens_Terapeutas">
+    <End Role="Terapeutas" Type="Self.Terapeutas" Multiplicity="1" />
+    <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terapeutas">
+        <PropertyRef Name="Terapeuta_Id" />
+      </Principal>
+      <Dependent Role="Tokens">
+        <PropertyRef Name="Terapeuta_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetPatientsByTherapist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_TerapeutaId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="GiveGoodFaceModelStoreContainer">
+    <EntitySet Name="CT_Eventos" EntityType="Self.CT_Eventos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modulos" EntityType="Self.Modulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegistrosEvento" EntityType="Self.RegistrosEvento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles_Modulos" EntityType="Self.Roles_Modulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sy_Configuraciones" EntityType="Self.Sy_Configuraciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Terapeutas" EntityType="Self.Terapeutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Pacientes_Terapeutas" Association="Self.FK_Pacientes_Terapeutas">
+      <End Role="Terapeutas" EntitySet="Terapeutas" />
+      <End Role="Pacientes" EntitySet="Pacientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pacientes_Usuarios" Association="Self.FK_Pacientes_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Pacientes" EntitySet="Pacientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistrosEvento_CT_Eventos" Association="Self.FK_RegistrosEvento_CT_Eventos">
+      <End Role="CT_Eventos" EntitySet="CT_Eventos" />
+      <End Role="RegistrosEvento" EntitySet="RegistrosEvento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistrosEvento_Pacientes" Association="Self.FK_RegistrosEvento_Pacientes">
+      <End Role="Pacientes" EntitySet="Pacientes" />
+      <End Role="RegistrosEvento" EntitySet="RegistrosEvento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_Modulos_Modulos" Association="Self.FK_Roles_Modulos_Modulos">
+      <End Role="Modulos" EntitySet="Modulos" />
+      <End Role="Roles_Modulos" EntitySet="Roles_Modulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_Modulos_Roles" Association="Self.FK_Roles_Modulos_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Roles_Modulos" EntitySet="Roles_Modulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Terapeutas_Usuarios" Association="Self.FK_Terapeutas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Terapeutas" EntitySet="Terapeutas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tokens_Pacientes" Association="Self.FK_Tokens_Pacientes">
+      <End Role="Pacientes" EntitySet="Pacientes" />
+      <End Role="Tokens" EntitySet="Tokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tokens_Terapeutas" Association="Self.FK_Tokens_Terapeutas">
+      <End Role="Terapeutas" EntitySet="Terapeutas" />
+      <End Role="Tokens" EntitySet="Tokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
