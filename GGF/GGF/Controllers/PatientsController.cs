@@ -4,20 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GGF.Models;
+using GGF.Models.Class;
 
 namespace GGF.Controllers
 {
     public class PatientsController : Controller
     {
-        // GET: Patients
         public ActionResult Index()
         {
-            List<GetPatientsByTherapist_Result> model = new List<GetPatientsByTherapist_Result>();
-            //Carga de usuario logueado
-            using (var context = new GiveGoodFaceEntities())
-            {
-                model = context.GetPatientsByTherapist(1).ToList();
-            }
+            List<GetPatientsByTherapist_Result> model = Patients.GetPatientsList(1);
             return View(model);
         }
 
