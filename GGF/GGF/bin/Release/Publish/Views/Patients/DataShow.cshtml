@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "DataShow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Chart.min.css" rel="stylesheet" />
+<script src="~/Scripts/Chart.min.js"></script>
+<h2>Estadísticas Diego</h2>
+
+<br />
+<div class="row">
+    <div class="col" style="width:49%">
+        <canvas id="pieChart"></canvas>
+    </div>
+    <div class="col" style="width:49%">
+        <canvas id="barChart"></canvas>
+    </div>
+</div>
+
+<script>
+    var configPie = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    15,
+                    10,
+                    7,
+                ],
+                backgroundColor: [
+                    '#0078FF',//Azul
+                    '#FF003E',//Rojo
+                    '#D800FF'//Morado
+                ],
+                label: 'Sentimientos'
+            }],
+            labels: [
+                'Alegria',
+                'Enojo',
+                'Tristeza'
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    };
+
+    //var barChartData = {
+    //    labels: ['Alegria', 'Enojo', 'Tristeza', 'Otro'],
+    //    datasets: [{
+    //        label: 'Exitos',
+    //        backgroundColor: [
+    //            '#0078FF',//Azul
+    //            '#FF003E',//Rojo
+    //            '#D800FF',//Morado
+    //            '#8C8B8C'//Morado
+    //        ],
+    //        yAxisID: 'y-axis-1',
+    //        data: [
+    //            15,
+    //            10,
+    //            7,
+    //            0
+    //        ]
+    //    }, {
+    //        label: 'Fallos',
+    //        backgroundColor: '#8C8B8C',
+    //        yAxisID: 'y-axis-2',
+    //        data: [
+    //            4,
+    //            3,
+    //            5,
+    //            0
+    //        ]
+    //    }]
+    //};
+
+    var barChartData = {
+        labels: ['Alegria', 'Enojo', 'Tristeza', 'Otro'],
+        datasets: [{
+            label: 'Exitos',
+            backgroundColor: [
+                '#0078FF',//Azul
+                '#FF003E',//Rojo
+                '#D800FF',//Morado
+                '#D800FF'//Morado
+            ],
+            yAxisID: 'y-axis-1',
+            data: [
+                15,
+                10,
+                7,
+                0
+            ]
+        }]
+    };
+
+    window.onload = function () {
+        var ctxPie = document.getElementById('pieChart').getContext('2d');
+        var myPie = new Chart(ctxPie, configPie);
+
+        var ctxBar = document.getElementById('barChart').getContext('2d');
+        var myBar = new Chart(ctxBar, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Sentimientos'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: true
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-axis-1',
+                    }
+                    //, {
+                    //    type: 'linear',
+                    //    display: true,
+                    //    position: 'right',
+                    //    id: 'y-axis-2',
+                    //    gridLines: {
+                    //        drawOnChartArea: false
+                    //    }
+                    //}
+                    ],
+                }
+            }
+        });
+    };
+    
+</script>

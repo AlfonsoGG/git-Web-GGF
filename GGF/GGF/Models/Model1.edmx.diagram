@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="de7f4378402f41c580d3607404ef7d1b" Name="Diagram1">
+        <EntityTypeShape EntityType="GiveGoodFaceModel.CT_Eventos" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.Modulos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.Pacientes" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.RegistrosEvento" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.Roles" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.Roles_Modulos" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.Sy_Configuraciones" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.Terapeutas" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.Tokens" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiveGoodFaceModel.Usuarios" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_RegistrosEvento_CT_Eventos" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_Roles_Modulos_Modulos" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_Pacientes_Terapeutas" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_Pacientes_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_RegistrosEvento_Pacientes" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_Roles_Modulos_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_Usuarios_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_Terapeutas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_Tokens_Terapeutas" ManuallyRouted="false" />
+        <AssociationConnector Association="GiveGoodFaceModel.FK_Tokens_Pacientes" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

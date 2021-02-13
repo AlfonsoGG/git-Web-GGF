@@ -1,0 +1,49 @@
+﻿
+body{
+    padding-top:100px;
+    padding-bottom:20px;
+}
+
+footer{
+    position:absolute;
+    bottom:0px;
+    width:1170px;;
+}
+
+.fas{
+    cursor:pointer;
+}
+
+.navHeader {
+    height: 70px;
+    background-color: #4481eb;
+    color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+    a:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+a > i{
+    text-decoration: none;
+    color: #4481eb;
+}
+
+a:hover > i {
+    text-decoration: none;
+    color: #04befe;
+}
+
+.width100{
+    width:100%;
+}

@@ -1,0 +1,127 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    <title>Proyecto GGF</title>
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="#" class="sign-in-form">
+                    <img src="~/Content/img/log.png" class="image" />
+                    <br />
+                    <h2 class="title">Iniciar Sesion</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Usuario" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Contraseña" />
+                    </div>
+                    <input type="submit" value="Login" class="btn solid" onclick="pacientes();" />
+                    
+                    <a style="text-decoration:none;" href="@Url.Action("Index","Patients")">Pacientes..</a>
+                   
+                    @*<p class="social-text">Inicia sesion con Facebook o Google</p>
+        <div class="social-media">
+            <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+            </a>
+        </div>*@
+                </form>
+                <form action="#" class="sign-up-form">
+                    <img src="~/Content/img/log.png" class="image" />
+                    <br />
+                    <h2 class="title">Registrarse</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Usuario" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Contraseña" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirmar contraseña" />
+                    </div>
+                    <input type="submit" class="btn" value="Sign up" />
+                    @*<p class="social-text">O Registrate con Facebook o Google</p>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-google"></i>
+                            </a>
+                        </div>*@
+                </form>
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>¿Aun no tienes cuenta para GiveGoodFace?</h3>
+                    <p>
+                        Ingresa a nuestro formulario de registro en el siguiente boton
+                    </p>
+                    <button class="btn transparent" id="sign-up-btn">
+                        Registro
+                    </button>
+                </div>
+                @*<img src="~/Content/img/log.png" class="image" />*@
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>¿Ya tiene una cuenta con nosotros ?</h3>
+                    <p>
+                        Ingresa a nuestra pagina de inicio de sesion en el siguiente boton
+                    </p>
+                    <button class="btn transparent" id="sign-in-btn">
+                        Iniciar Sesion
+                    </button>
+                </div>
+                @*<img src="~/Content/img/log.png" class="image" />*@
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sign_in_btn = document.querySelector("#sign-in-btn");
+        const sign_up_btn = document.querySelector("#sign-up-btn");
+        const container = document.querySelector(".container");
+
+        sign_up_btn.addEventListener("click", () => {
+            container.classList.add("sign-up-mode");
+        });
+
+        sign_in_btn.addEventListener("click", () => {
+            container.classList.remove("sign-up-mode");
+        });
+
+        function pacientes() {
+            /**/
+            location.href = 'https://ggface.gopac.mx/Patients/';
+        /**/
+    }
+
+    </script>
+</body>
+</html>
