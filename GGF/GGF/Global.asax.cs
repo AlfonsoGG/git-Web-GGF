@@ -17,5 +17,25 @@ namespace GGF
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        /// <summary>
+        /// Sessions begin
+        /// </summary>
+        /// <param name="sender">object</param>
+        /// <param name="e">EventArgs</param>
+        void Session_Start(object sender, EventArgs e)
+        {
+            if (Session.IsNewSession && Session["User"] == null)
+            {
+                if (HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"] != null &&
+                    HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString() != "Account" &&
+                    HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString() != "ServiceControlBoards" &&
+                    HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString() != "UploadFile"
+                    )
+                {
+                    Response.Redirect("~/Account/LogOff");
+                }
+            }
+        }
     }
 }
