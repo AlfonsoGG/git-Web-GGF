@@ -1,48 +1,106 @@
-body {
-    box-sizing: border-box;
+#main-header {
+  background: rgb(4, 113, 236);
+  color: white;
+  height: 80px;
+}
+#main-header a {
+  color: white;
+}
+
+/*
+ * Logo
+ */
+#logo-header {
+  float: left;
+  padding: 15px 0 0 20px;
+  text-decoration: none;
+}
+#logo-header:hover {
+  color: #fa0303;
+}
+
+#logo-header .site-name {
+  display: block;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+#logo-header .site-desc {
+  display: block;
+  font-weight: 300;
+  font-size: 0.8em;
+  color: #999;
+}
+
+/*
+ * Navegación
+ */
+nav {
+  float: right;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background: #0b76a6;
 }
 
 .d-flex input {
-    margin: .9em 0em;
+  margin: 0.9em 0em;
 }
 
 .d-flex button {
-    margin: 1.5em .6em;
-    padding: .3em 2.4em;
+  margin: 1.5em 0.6em;
+  padding: 0.3em 2.4em;
 }
 
 .d-flex table {
-    margin: 1em 10em;
+  margin: 1em 10em;
 }
 
 table .btnedit {
-    color: lightgreen;
-    cursor: pointer;
+  color: lightgreen;
+  cursor: pointer;
 }
 
 table .btndelete {
-    color: tomato;
-    cursor: pointer;
+  color: tomato;
+  cursor: pointer;
 }
 
 /* messages */
 .updatemsg,
 .deletemsg,
 .insertmsg {
-    position: absolute;
-    top: -40px;
+  position: absolute;
+  top: -40px;
 }
 
 .movedown {
-    animation: slideup 3.4s ease;
+  animation: slideup 3.4s ease;
 }
 
 @keyframes slideup {
-    50% {
-        top: 0
-    }
+  50% {
+    top: 0;
+  }
 
-    100% {
-        top: -40px;
-    }
+  100% {
+    top: -40px;
+  }
 }
