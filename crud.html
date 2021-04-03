@@ -1,150 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Formulario</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Formulario</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="crud.css" />
+  </head>
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-  <link rel="stylesheet" href="crud.css" />
-</head>
+  <body>
+    <header id="main-header">
+      <a id="logo-header" href="#">
+        <span class="site-name">
+          <i class="far fa-smile-beam"> </i> Give Good Face</span
+        >
+      </a>
 
-<body>
-  <header id="main-header">
-
-    <a id="logo-header" href="#">
-      <span class="site-name"> <i class="far fa-smile-beam">  </i> Give Good Face</span>
-
-    </a>
-
-    <nav>
-      <ul>
-        <li><a href="crud.html">Pacientes</a></li>
-        <li><a href="index.html">Cerrar Sesion</a></li>
-      </ul>
-    </nav><!-- / nav -->
-
-  </header>
-  <main>
-    
-    <div class="container text-center">
-      
-      <div class="d-flex justify-content-center">
-        <form class="w-50">
-          <input type="text" id="userid" class="form-control" autocomplete="off" readonly placeholder="ID" />
-          <div class="row">
-            <div class="col">
-              <input type="text" id="name" class="form-control mt-0" autocomplete="off" placeholder="Nombre" />
+      <nav>
+        <ul>
+          <li><a href="crud.html">Pacientes</a></li>
+          <li><a href="index.html">Cerrar Sesion</a></li>
+        </ul>
+      </nav>
+      <!-- / nav -->
+    </header>
+    <main>
+      <div class="container text-center">
+        <div class="d-flex justify-content-center">
+          <form class="w-50">
+            <input
+              type="text"
+              id="userid"
+              class="form-control"
+              autocomplete="off"
+              readonly
+              placeholder="ID"
+            />
+            <div class="row">
+              <div class="col">
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control mt-0"
+                  autocomplete="off"
+                  placeholder="Nombre"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  id="lastname"
+                  class="form-control mt-0"
+                  autocomplete="off"
+                  placeholder="Apellido"
+                />
+              </div>
             </div>
-            <div class="col">
-              <input type="text" id="lastname" class="form-control mt-0" autocomplete="off" placeholder="Apellido" />
-            </div>
-          </div>
 
-          <input type="text" id="email" class="form-control" autocomplete="off" placeholder="E-mail" />
+            <input
+              type="text"
+              id="email"
+              class="form-control"
+              autocomplete="off"
+              placeholder="E-mail"
+            />
 
-          <div class="row">
-            <div class="col">
-              <input type="text" id="Edad" class="form-control m-0" autocomplete="off" placeholder="Edad" />
+            <div class="row">
+              <div class="col">
+                <input
+                  type="text"
+                  id="Edad"
+                  class="form-control m-0"
+                  autocomplete="off"
+                  placeholder="Edad"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  id="User"
+                  class="form-control mt-0"
+                  autocomplete="off"
+                  placeholder="Usuario"
+                />
+              </div>
             </div>
-            <div class="col">
-              <input type="text" id="User" class="form-control mt-0" autocomplete="off" placeholder="Usuario" />
 
+            <div class="row">
+              <div class="col">
+                <input
+                  type="text"
+                  id="password"
+                  class="form-control m-0"
+                  autocomplete="off"
+                  placeholder="Contraseña"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  id="repeatppassword"
+                  class="form-control m-0"
+                  autocomplete="off"
+                  placeholder="Repetir Contraseña"
+                />
+              </div>
             </div>
-          </div>
+          </form>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-success" id="btn-create">Agregar</button>
+          <button class="btn btn-primary" id="btn-read">Leer</button>
+          <button class="btn btn-warning" id="btn-update">Actualizar</button>
+          <button class="btn btn-danger" id="btn-delete">Borrar</button>
+        </div>
 
-          <div class="row">
-            <div class="col">
-              <input type="text" id="password" class="form-control m-0" autocomplete="off" placeholder="Contraseña" />
-            </div>
-            <div class="col">
-              <input type="text" id="repeatppassword" class="form-control m-0" autocomplete="off"
-                placeholder="Repetir Contraseña" />
-            </div>
-          </div>
-        </form>
+        <!--  Table -->
+        <div class="d-flex table-data">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Borrar</th>
+                <th scope="col">Grafica</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr>
+                <th scope="row">1</th>
+                <td>Diego</td>
+                <td>Gonzalez</td>
+                <td>Prueba@prueba.com</td>
+                <td>User</td>
+                <td><i class="fas fa-user-edit"></i></td>
+                <td><i class="fas fa-user-times"></i></td>
+                <td><a href="graphic.html"><i class="fas fa-chart-pie"></i></a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Alfonso</td>
+                <td>Galaviz</td>
+                <td>Prueba@prueba.com</td>
+                <td>User</td>
+                <td><i class="fas fa-user-edit"></i></td>
+                <td><i class="fas fa-user-times"></i></td>
+                <td><i class="fas fa-chart-pie"></i></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Fernanda</td>
+                <td>Alvares</td>
+                <td>Prueba@prueba.com</td>
+                <td>User</td>
+                <td><i class="fas fa-user-edit"></i></td>
+                <td><i class="fas fa-user-times"></i></td>
+                <td><i class="fas fa-chart-pie"></i></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Cesar</td>
+                <td>:v</td>
+                <td>Prueba@prueba.com</td>
+                <td>User</td>
+                <td><i class="fas fa-user-edit"></i></td>
+                <td><i class="fas fa-user-times"></i></td>
+                <td><a href="graphic.html"><i class="fas fa-chart-pie"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="notfound"></div>
       </div>
-      <div class="d-flex justify-content-center">
-        <button class="btn btn-success" id="btn-create">Agregar</button>
-        <button class="btn btn-primary" id="btn-read">Leer</button>
-        <button class="btn btn-warning" id="btn-update">Actualizar</button>
-        <button class="btn btn-danger" id="btn-delete">Borrar</button>
-      </div>
-
-      <!--  Table -->
-      <div class="d-flex table-data">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Apellido</th>
-              <th scope="col">E-mail</th>
-              <th scope="col">Usuario</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Borrar</th>
-              <th scope="col">Grafica</th>
-
-            </tr>
-          </thead>
-          <tbody id="tbody">
-
-            <tr>
-              <th scope="row">1</th>
-              <td>Diego</td>
-              <td>Gonzalez</td>
-              <td>Prueba@prueba.com</td>
-              <td>User</td>
-              <td><i class="fas fa-user-edit"></i></td>
-              <td><i class="fas fa-user-times"></i></td>
-              <td><i class="fas fa-chart-pie"></i></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Alfonso</td>
-              <td>Galaviz</td>
-              <td>Prueba@prueba.com</td>
-              <td>User</td>
-              <td><i class="fas fa-user-edit"></i></td>
-              <td><i class="fas fa-user-times"></i></td>
-              <td><i class="fas fa-chart-pie"></i></td>
-
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Fernanda</td>
-              <td>Alvares</td>
-              <td>Prueba@prueba.com</td>
-              <td>User</td>
-              <td><i class="fas fa-user-edit"></i></td>
-              <td><i class="fas fa-user-times"></i></td>
-              <td><i class="fas fa-chart-pie"></i></td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Cesar</td>
-              <td>:v</td>
-              <td>Prueba@prueba.com</td>
-              <td>User</td>
-              <td><i class="fas fa-user-edit"></i></td>
-              <td><i class="fas fa-user-times"></i></td>
-              <td><i class="fas fa-chart-pie"></i></td>
-
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-      <div id="notfound"></div>
-    </div>
-  </main>
-  <!-- Custom main file-->
-  <script src="../js/main.js" type="module"></script>
-</body>
-
+    </main>
+    <!-- Custom main file-->
+    <script src="../js/main.js" type="module"></script>
+  </body>
 </html>
